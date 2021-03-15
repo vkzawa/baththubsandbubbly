@@ -12,6 +12,9 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-gatsby-cloud`,
+    },
+    {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         minify: false, // Breaks styles if not set to false
