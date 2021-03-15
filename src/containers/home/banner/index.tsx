@@ -1,63 +1,43 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import BannerPosts from './banner-post';
-import TrendingPost from '../../../components/trending-post/trending-post';
+// import TrendingPost from '../../../components/trending-post/trending-post';
 import {
 	BannerWrapper,
 	BannerInner,
 	BannerPostArea,
-	TrendingPosts,
-	Title,
+	// TrendingPosts,
+	// Title,
 } from './style';
+import { PostTitle, RawHTML } from '../../../components/post-details/post-details.style';
 
 type BannerProps = {};
 
 const Banner: React.FunctionComponent<BannerProps> = () => {
-	const data = useStaticQuery(graphql`
-		query {
-			allMarkdownRemark(
-				sort: { fields: [frontmatter___date], order: DESC }
-				limit: 6
-				filter: { frontmatter: { tags: { eq: "trending" } } }
-			) {
-				totalCount
-				edges {
-					node {
-						excerpt(pruneLength: 300)
-						fields {
-							slug
-						}
-						frontmatter {
-							title
-							tags
-						}
-					}
-				}
-			}
-		}
-	`);
+	// const data = useStaticQuery(graphql`
+	// 	`);
 
-	const posts = data.allMarkdownRemark.edges;
+	// const blurb = data.wpPage;
 	return (
 		<BannerWrapper>
 			<BannerInner>
 				<BannerPostArea>
 					<BannerPosts />
 				</BannerPostArea>
-				<TrendingPosts>
+				{/* <TrendingPosts>
 					<Title>Trending Posts</Title>
 					{posts.map(({ node }: any) => {
-						const title = node.frontmatter.title || node.fields.slug;
+						const title = node.title || node.slug;
 						return (
 							<TrendingPost
-								key={node.fields.slug}
+								key={node.id}
 								title={title}
-								url={node.fields.slug}
-								tags={node.frontmatter.tags}
+								url={node.uri}
+								tags={node.tags}
 							/>
 						);
 					})}
-				</TrendingPosts>
+				</TrendingPosts> */}
 			</BannerInner>
 		</BannerWrapper>
 	);

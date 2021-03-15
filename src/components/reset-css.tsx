@@ -47,11 +47,11 @@ const ResetCSS = createGlobalStyle`
   h5,
   h6{
     margin-top: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Dancing Script', sans-serif;
   }
 
   body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
     font-size: 16px;
@@ -64,7 +64,7 @@ const ResetCSS = createGlobalStyle`
     margin: 0 0 1.7em 0;
   }
 
-  input, textarea, select, button{font-family: 'Roboto', sans-serif;}
+  input, textarea, select, button{font-family: 'Lato', sans-serif;}
 
   ul,ol {
     margin: 0;
@@ -81,7 +81,7 @@ const ResetCSS = createGlobalStyle`
   }
 
   blockquote{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-weight: 500;
   }
 
@@ -126,7 +126,7 @@ const ResetCSS = createGlobalStyle`
 
   .nav-sticky{
     .header {
-      box-shadow: 0 0 15px rgba(0,0,0,.08);
+      /* box-shadow: 0 15px 0 rgba(255,255,255,.5); */
       .navbar{
         @media (min-width: 1400px) {
           padding-top: 25px;

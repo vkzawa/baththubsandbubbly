@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 import Layout from "../containers/layout";
-import RomanticBlog from "../containers/home";
+import Blog from "../containers/home";
 import SEO from "../components/seo";
 
 interface IndexPageProps extends PageProps {
@@ -30,10 +30,10 @@ const IndexPage: React.FC<IndexPageProps> = (props) => {
 	return (
 		<Layout>
 			<SEO
-				title="Romantic Blog"
+				title="🛁 & 🍾"
 				description={data.site.siteMetadata.description}
 			/>
-			<RomanticBlog />
+			<Blog />
 		</Layout>
 	);
 };

@@ -14,9 +14,9 @@ import {
 
 const Tags = ({ pageContext, data }: any) => {
 	const { tag } = pageContext;
-	const { edges, totalCount } = data.allMarkdownRemark;
+	const { edges, totalCount } = data.allWpPost;
 
-	const colors = ['#E33974', '#006EE5', '#4F4DBF', '#784D74'];
+	const colors = ['#FFCCCA', '#FFEDEC', '#F8E9DD', '#FCEED1'];
 	function getRandomColor(values: string[]) {
 		const random = Math.floor(Math.random() * values.length);
 		return values[random];
@@ -34,17 +34,13 @@ const Tags = ({ pageContext, data }: any) => {
 				<PostRow>
 					<PostsList>
 						{edges.map(({ node }: any) => (
-							<CategoryPostCol key={node.fields.slug}>
+							<CategoryPostCol key={node.id}>
 								<PostCard
 									postColor={getRandomColor(colors)}
-									title={node.frontmatter.title}
-									image={
-										node.frontmatter.cover == null
-											? null
-											: node.frontmatter.cover.childImageSharp.fluid
-									}
-									date={node.frontmatter.date}
-									url={node.fields.slug}
+									title={node.title}
+									image={node.featuredImage?.node?.localFile?.childImageSharp?.fluid || null}
+									date={node.date}
+									url={node.uri}
 								/>
 							</CategoryPostCol>
 						))}
@@ -58,29 +54,36 @@ const Tags = ({ pageContext, data }: any) => {
 export default Tags;
 
 export const pageQuery = graphql`
-	query($tag: String) {
-		allMarkdownRemark(
-			limit: 2000
-			sort: { fields: [frontmatter___date], order: DESC }
-			filter: { frontmatter: { tags: { in: [$tag] } } }
+	query($slug: String) {
+		allWpPost(
+			sort: {fields: date, order: DESC}
+			limit: 3
+			filter: {tags: {nodes: {elemMatch: {slug: {eq: $slug}}}}}
 		) {
 			totalCount
 			edges {
 				node {
-					excerpt(pruneLength: 300)
-					fields {
-						slug
-					}
-					frontmatter {
-						date(formatString: "MMMM DD, YYYY")
-						title
-						categories
-						cover {
-							childImageSharp {
-								fluid(maxWidth: 635, maxHeight: 390, quality: 100) {
-									...GatsbyImageSharpFluid_withWebp_tracedSVG
+					id
+					slug
+					uri
+					title
+					date(formatString: "MMMM DD, YYYY")
+					excerpt
+					featuredImage {
+						node {
+							localFile {
+								childImageSharp {
+									fluid(maxWidth: 635, maxHeight: 390, quality: 100) {
+										...GatsbyImageSharpFluid_withWebp_tracedSVG
+									}
 								}
 							}
+						}
+					}
+					categories {
+						nodes {
+							name
+							uri
 						}
 					}
 				}

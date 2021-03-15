@@ -9,7 +9,8 @@ import {
 	PostCategory,
 	PostPreview,
 	PostDescriptionWrapper,
-	PostDescription,
+	// PostDescription,
+	RawHTML,
 	PostTags,
 } from './post-details.style';
 
@@ -19,7 +20,10 @@ type PostDetailsProps = {
 	preview?: any;
 	description: any;
 	tags?: [];
-	categories?: [];
+	categories?: {
+		uri: string,
+		name: string,
+	}[];
 	className?: string;
 	imagePosition?: 'left' | 'top';
 };
@@ -63,10 +67,10 @@ const PostDetails: React.FunctionComponent<PostDetailsProps> = ({
 				<>
 					{categories == null ? null : (
 						<PostCategory>
-							{categories &&
-								categories.map((cat, index) => (
-									<Link key={index} to={`/category/${_.kebabCase(cat)}/`}>
-										{cat}
+							{Boolean(categories.length) &&
+								categories.map((category, index) => (
+									<Link key={index} to={category.uri}>
+										{category.name}
 									</Link>
 								))}
 						</PostCategory>
@@ -98,7 +102,7 @@ const PostDetails: React.FunctionComponent<PostDetailsProps> = ({
 				) : (
 					''
 				)}
-				<PostDescription
+				<RawHTML
 					dangerouslySetInnerHTML={{ __html: description }}
 					className='post_des'
 				/>

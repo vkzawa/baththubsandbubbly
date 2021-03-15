@@ -13,10 +13,10 @@ import {
 } from './templates.style';
 
 const Category = ({ pageContext, data }: any) => {
-	const { category } = pageContext;
-	const { edges, totalCount } = data.allMarkdownRemark;
+	const category = data.wpCategory;
+	const { edges, totalCount } = data.allWpPost;
 
-	const colors = ['#E33974', '#006EE5', '#4F4DBF', '#784D74'];
+	const colors = ['#FFCCCA', '#FFEDEC', '#F8E9DD', '#FCEED1'];
 	function getRandomColor(values: string[]) {
 		const random = Math.floor(Math.random() * values.length);
 		return values[random];
@@ -25,29 +25,25 @@ const Category = ({ pageContext, data }: any) => {
 	return (
 		<Layout>
 			<SEO
-				title={category}
+				title={category.name}
 				description={`A collection of ${totalCount} post`}
 			/>
 
 			<TagPostsWrapper>
 				<TagPageHeading>
-					<TagName>{category}</TagName>
+					<TagName>{category.name}</TagName>
 					{`A collection of ${totalCount} post`}
 				</TagPageHeading>
 				<PostRow>
 					<PostsList>
 						{edges.map(({ node }: any) => (
-							<CategoryPostCol key={node.fields.slug}>
+							<CategoryPostCol key={node.id}>
 								<PostCard
 									postColor={getRandomColor(colors)}
-									title={node.frontmatter.title}
-									image={
-										node.frontmatter.cover == null
-											? null
-											: node.frontmatter.cover.childImageSharp.fluid
-									}
-									date={node.frontmatter.date}
-									url={node.fields.slug}
+									title={node.title}
+									image={node.featuredImage?.node?.localFile?.childImageSharp?.fluid || null}
+									date={node.date}
+									url={node.uri}
 								/>
 							</CategoryPostCol>
 						))}
@@ -61,29 +57,39 @@ const Category = ({ pageContext, data }: any) => {
 export default Category;
 
 export const pageQuery = graphql`
-	query($category: String) {
-		allMarkdownRemark(
-			limit: 2000
-			sort: { fields: [frontmatter___date], order: DESC }
-			filter: { frontmatter: { categories: { in: [$category] } } }
+	query($slug: String) {
+		wpCategory(slug: {eq: $slug}) {
+			name
+		}
+		allWpPost(
+			sort: {fields: date, order: DESC}
+			limit: 3
+			filter: {categories: {nodes: {elemMatch: {slug: {eq: $slug}}}}}
 		) {
 			totalCount
 			edges {
 				node {
-					excerpt(pruneLength: 300)
-					fields {
-						slug
-					}
-					frontmatter {
-						date(formatString: "MMMM DD, YYYY")
-						title
-						categories
-						cover {
-							childImageSharp {
-								fluid(maxWidth: 635, maxHeight: 390, quality: 100) {
-									...GatsbyImageSharpFluid_withWebp_tracedSVG
+					id
+					slug
+					uri
+					title
+					date(formatString: "MMMM DD, YYYY")
+					excerpt
+					featuredImage {
+						node {
+							localFile {
+								childImageSharp {
+									fluid(maxWidth: 635, maxHeight: 390, quality: 100) {
+										...GatsbyImageSharpFluid_withWebp_tracedSVG
+									}
 								}
 							}
+						}
+					}
+					categories {
+						nodes {
+							name
+							uri
 						}
 					}
 				}

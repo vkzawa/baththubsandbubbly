@@ -4,6 +4,8 @@ import { themeGet } from '@styled-system/theme-get';
 export const PostBannerCardWrapper = styled.div`
 	position: relative;
 	overflow: hidden;
+	width: 100%;
+
 	&:hover {
 		.post_preview {
 			a {
@@ -147,10 +149,10 @@ export const PostCategory = styled.span`
 	}
 	a {
 		font-size: 12px;
-		background-color: ${themeGet('primary', '#FF2E55')};
+		background-color: ${themeGet('colors.primary', '#FF2E55')};
 		font-weight: ${themeGet('fontWeights.6', '700')};
 		text-transform: uppercase;
-		color: ${themeGet('white', '#FFFFFF')};
+		color: ${themeGet('colors.textColor', '#000000')};
 		padding: 2px 10px;
 		display: inline-block;
 		margin: 5px;

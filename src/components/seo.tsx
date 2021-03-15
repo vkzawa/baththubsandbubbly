@@ -38,7 +38,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={title || ''}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {

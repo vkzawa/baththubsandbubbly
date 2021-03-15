@@ -8,27 +8,35 @@ type BannerPostsProps = {};
 const BannerPosts: React.FunctionComponent<BannerPostsProps> = () => {
 	const data = useStaticQuery(graphql`
 		query {
-			allMarkdownRemark(
-				sort: { fields: [frontmatter___date], order: DESC }
+			allWpPost(
+				sort: {fields: date, order: DESC}
 				limit: 1
+				filter: {isSticky: {eq: true}}
 			) {
 				totalCount
 				edges {
 					node {
-						fields {
-							slug
-						}
-						frontmatter {
-							date(formatString: "MMMM DD, YYYY")
-							title
-							description
-							categories
-							cover {
-								childImageSharp {
-									fluid(maxWidth: 985, quality: 100) {
-										...GatsbyImageSharpFluid_withWebp_tracedSVG
+						id
+						slug
+						uri
+						title
+						date(formatString: "MMMM DD, YYYY")
+						excerpt
+						featuredImage {
+							node {
+								localFile {
+									childImageSharp {
+										fluid(maxWidth: 985, quality: 100) {
+											...GatsbyImageSharpFluid_withWebp_tracedSVG
+										}
 									}
 								}
+							}
+						}
+						categories {
+							nodes {
+								name
+								uri
 							}
 						}
 					}
@@ -37,25 +45,21 @@ const BannerPosts: React.FunctionComponent<BannerPostsProps> = () => {
 		}
 	`);
 
-	const posts = data.allMarkdownRemark.edges;
-
+	const posts = data.allWpPost.edges;
 	return (
 		<BannerPostWrapper>
 			<BannerPostRow>
 				{posts.map(({ node }: any) => {
-					const title = node.frontmatter.title || node.fields.slug;
+					const title = node.title || node.slug;
 					return (
 						<PostBannerCard
-							key={node.fields.slug}
+							key={node.id}
 							title={title}
-							image={
-								node.frontmatter.cover == null
-									? null
-									: node.frontmatter.cover.childImageSharp.fluid
-							}
-							url={node.fields.slug}
-							categories={node.frontmatter.categories}
-							date={node.frontmatter.date}
+							image={node.featuredImage?.node?.localFile?.childImageSharp?.fluid || null}
+							imageType="fluid"
+							url={node.uri}
+							categories={node.categories}
+							date={node.date}
 						/>
 					);
 				})}

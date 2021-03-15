@@ -5,7 +5,7 @@ import { FeaturedPostWrapper, FeaturedPostRow, FeaturedPostCol } from './style';
 
 type FeaturedPostsProps = {};
 
-const colors = ['#E33974', '#006EE5', '#4F4DBF'];
+const colors = ['#FFCCCA', '#FFEDEC', '#F8E9DD', '#FCEED1'];
 function getRandomColor(values: string[]) {
 	const random = Math.floor(Math.random() * values.length);
 	return values[random];
@@ -14,28 +14,36 @@ function getRandomColor(values: string[]) {
 const FeaturedPosts: React.FunctionComponent<FeaturedPostsProps> = () => {
 	const data = useStaticQuery(graphql`
 		query {
-			allMarkdownRemark(
-				sort: { fields: [frontmatter___date], order: DESC }
+			allWpPost(
+				sort: {fields: date, order: DESC}
 				limit: 3
-				filter: { frontmatter: { tags: { eq: "featured" } } }
+				skip: 1
+				filter: {isSticky: {eq: true}}
 			) {
 				totalCount
 				edges {
 					node {
-						fields {
-							slug
-						}
-						frontmatter {
-							date(formatString: "MMMM DD, YYYY")
-							title
-							description
-							categories
-							cover {
-								childImageSharp {
-									fluid(maxWidth: 435, maxHeight: 400, quality: 100) {
-										...GatsbyImageSharpFluid_withWebp_tracedSVG
+						id
+						slug
+						uri
+						title
+						date(formatString: "MMMM DD, YYYY")
+						excerpt
+						featuredImage {
+							node {
+								localFile {
+									childImageSharp {
+										fluid(maxWidth: 435, maxHeight: 400, quality: 100) {
+											...GatsbyImageSharpFluid_withWebp_tracedSVG
+										}
 									}
 								}
+							}
+						}
+						categories {
+							nodes {
+								name
+								uri
 							}
 						}
 					}
@@ -44,26 +52,22 @@ const FeaturedPosts: React.FunctionComponent<FeaturedPostsProps> = () => {
 		}
 	`);
 
-	const posts = data.allMarkdownRemark.edges;
+	const posts = data.allWpPost.edges;
 
 	return (
 		<FeaturedPostWrapper>
 			<FeaturedPostRow>
 				{posts.map(({ node }: any) => {
-					const title = node.frontmatter.title || node.fields.slug;
+					const title = node.title || node.slug;
 					return (
-						<FeaturedPostCol key={title}>
+						<FeaturedPostCol key={node.id}>
 							<FeaturedCard
 								postColor={getRandomColor(colors)}
 								title={title}
-								image={
-									node.frontmatter.cover == null
-										? null
-										: node.frontmatter.cover.childImageSharp.fluid
-								}
-								url={node.fields.slug}
-								categories={node.frontmatter.categories}
-								date={node.frontmatter.date}
+								image={node.featuredImage?.node?.localFile?.childImageSharp?.fluid || null}
+								url={node.uri}
+								categories={node.categories}
+								date={node.date}
 								overlay={true}
 							/>
 						</FeaturedPostCol>

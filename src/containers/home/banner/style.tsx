@@ -3,7 +3,7 @@ import { themeGet } from '@styled-system/theme-get';
 
 export const BannerWrapper = styled.div`
   position: relative;
-  padding: 30px 0 120px;
+  padding: 30px 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,21 +23,13 @@ export const BannerInner = styled.div`
   margin: 0 auto;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  @media (max-width: 767px) {
-    flex-direction: column;
-  }
+  justify-content: center;
 `;
 
 export const BannerPostArea = styled.div`
-  width: calc(100% - 375px);
-  @media (max-width: 1200px) {
-    width: calc(100% - 335px);
-  }
-  @media (max-width: 1024px) {
-    width: calc(100% - 275px);
-  }
-  @media (max-width: 767px) {
+  width: 75%;
+
+  @media (max-width: 1000px) {
     width: 100%;
   }
 `;

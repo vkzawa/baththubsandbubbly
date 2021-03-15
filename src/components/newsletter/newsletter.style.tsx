@@ -94,7 +94,7 @@ export const NewsletterInputWrapper = styled.form`
 		height: 56px;
 		text-transform: uppercase;
 		font-weight: 700;
-		font-family: ${themeGet('fontFamily.1', "'Roboto', sans-serif")};
+		font-family: ${themeGet('fontFamily.1', "'Lato', sans-serif")};
 		background-color: ${themeGet('primary', '#FF2E55')};
 		&:hover {
 			background-color: ${themeGet('black', '#121213')};

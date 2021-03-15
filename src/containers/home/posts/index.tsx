@@ -12,9 +12,10 @@ import BlogPostsWrapper, {
 
 // small utility functions
 function isFluid(value: number) {
-	return !(value % 5);
+	// return !(value % 5);
+	return false;
 }
-const colors = ['#E33974', '#006EE5', '#4F4DBF', '#784D74'];
+const colors = ['#FFCCCA', '#FFEDEC', '#F8E9DD', '#FCEED1'];
 function getRandomColor(values: string[]) {
 	const random = Math.floor(Math.random() * values.length);
 	return values[random];
@@ -25,30 +26,34 @@ type PostsProps = {};
 const Posts: React.FunctionComponent<PostsProps> = () => {
 	const data = useStaticQuery(graphql`
 		query {
-			allMarkdownRemark(
-				sort: { fields: [frontmatter___date], order: DESC }
-				skip: 1
-				filter: { frontmatter: { tags: { ne: "featured" } } }
+			allWpPost(
+				sort: {fields: date, order: DESC}
+				filter: {isSticky: {ne: true}}
 			) {
 				totalCount
 				edges {
 					node {
-						fields {
-							slug
-							readingTime {
-								text
-							}
-						}
-						frontmatter {
-							date(formatString: "MMMM DD, YYYY")
-							title
-							categories
-							cover {
-								childImageSharp {
-									fluid(maxWidth: 1360, quality: 100) {
-										...GatsbyImageSharpFluid_withWebp_tracedSVG
+						id
+						slug
+						uri
+						title
+						date(formatString: "MMMM DD, YYYY")
+						excerpt
+						featuredImage {
+							node {
+								localFile {
+									childImageSharp {
+										fluid(maxWidth: 1360, quality: 100) {
+											...GatsbyImageSharpFluid_withWebp_tracedSVG
+										}
 									}
 								}
+							}
+						}
+						categories {
+							nodes {
+								name
+								uri
 							}
 						}
 					}
@@ -57,8 +62,8 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
 		}
 	`);
 
-	const posts = data.allMarkdownRemark.edges;
-	const totalPost = data.allMarkdownRemark.totalCount;
+	const posts = data.allWpPost.edges;
+	const totalPost = data.allWpPost.totalCount;
 
 	const [visiblePost, setVisiblePost] = useState(8);
 	const [loading, setLoading] = useState(false);
@@ -76,45 +81,37 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
 			<PostRow>
 				<PostsList>
 					{posts.slice(0, visiblePost).map(({ node }: any, idx: number) => {
-						const title = node.frontmatter.title || node.fields.slug;
+						const title = node.title || node.slug;
 						if (isFluid(idx)) {
 							return (
-								<PostCol key={node.fields.slug} className='full_width'>
+								<PostCol key={node.id} className='full_width'>
 									<PostCardFull
 										postColor={getRandomColor(colors)}
 										title={title}
-										image={
-											node.frontmatter.cover == null
-												? null
-												: node.frontmatter.cover.childImageSharp.fluid
-										}
-										url={node.fields.slug}
-										categories={node.frontmatter.categories}
-										date={node.frontmatter.date}
+										image={node.featuredImage?.node?.localFile?.childImageSharp?.fluid || null}
+										url={node.uri}
+										categories={node.categories}
+										date={node.date}
 									/>
 								</PostCol>
 							);
 						}
 						return (
-							<PostCol key={node.fields.slug}>
+							<PostCol key={node.id}>
 								<PostCard
 									postColor={getRandomColor(colors)}
 									title={title}
-									image={
-										node.frontmatter.cover == null
-											? null
-											: node.frontmatter.cover.childImageSharp.fluid
-									}
-									url={node.fields.slug}
-									categories={node.frontmatter.categories}
-									date={node.frontmatter.date}
+									image={node.featuredImage?.node?.localFile?.childImageSharp?.fluid || null}
+									url={node.uri}
+									categories={node.categories}
+									date={node.date}
 								/>
 							</PostCol>
 						);
 					})}
 				</PostsList>
 				<LoadMoreButton>
-					{visiblePost < totalPost ? (
+					{visiblePost < totalPost && (
 						<Button
 							title='More Stories'
 							type='submit'
@@ -122,8 +119,6 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
 							isLoading={loading}
 							loader='Loading..'
 						/>
-					) : (
-						<p>No more posts</p>
 					)}
 				</LoadMoreButton>
 			</PostRow>

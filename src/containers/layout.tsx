@@ -37,7 +37,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
 
 				<Wrapper>
 					{children}
-					<Newsletter />
+					{/* <Newsletter /> */}
 					<Footer>
 						Copyright &copy; {new Date().getFullYear()}
 						<a href='https://redq.io/'> RedQ, Inc.</a>

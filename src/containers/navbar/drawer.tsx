@@ -14,10 +14,7 @@ import {
 } from './navbar.style';
 import { FiX } from 'react-icons/fi';
 import {
-	IoLogoFacebook,
-	IoLogoTwitter,
 	IoLogoInstagram,
-	IoLogoLinkedin,
 } from 'react-icons/io';
 
 type MobileMenuProps = {
@@ -27,23 +24,8 @@ type MobileMenuProps = {
 
 const SocialLinks = [
 	{
-		icon: <IoLogoFacebook />,
-		url: 'https://www.facebook.com/redqinc/',
-		tooltip: '',
-	},
-	{
 		icon: <IoLogoInstagram />,
-		url: 'https://www.instagram.com/redqinc/',
-		tooltip: '',
-	},
-	{
-		icon: <IoLogoTwitter />,
-		url: 'https://twitter.com/redqinc',
-		tooltip: '',
-	},
-	{
-		icon: <IoLogoLinkedin />,
-		url: 'https://www.linkedin.com/company/redqinc/',
+		url: 'https://www.instagram.com/heyerikak/',
 		tooltip: '',
 	},
 ];
@@ -77,9 +59,9 @@ const DrawerComp: React.FunctionComponent<MobileMenuProps> = ({
 		>
 			<DrawerContentWrapper>
 				<DrawerHead>
-					<DrawerLogo>
-						<img src={logo} alt='Logo' />
-					</DrawerLogo>
+					{/* <DrawerLogo>
+						<img src={logo} alt='Logo' width="120" />
+					</DrawerLogo> */}
 					<DrawerClose onClick={toggleDrawer}>
 						<FiX />
 					</DrawerClose>
@@ -87,7 +69,7 @@ const DrawerComp: React.FunctionComponent<MobileMenuProps> = ({
 				<Menu items={items} className='mobile-menu' />
 
 				<DrawerContentBlock>
-					<DrawerContentTitle>Follow us</DrawerContentTitle>
+					<DrawerContentTitle>Follow</DrawerContentTitle>
 					<SocialProfile items={SocialLinks} />
 				</DrawerContentBlock>
 			</DrawerContentWrapper>

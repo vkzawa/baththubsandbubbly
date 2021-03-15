@@ -6,7 +6,7 @@ const HeaderWrapper = styled.header`
   position: relative;
   z-index: 99999;
   transition: 0.25s ease-in-out;
-  border-bottom: 1px solid ${themeGet('colors.borderColor', '#DBDBDB')};
+  /* border-bottom: 1px solid ${themeGet('colors.borderColor', '#DBDBDB')}; */
 `;
 
 export const HeaderTop = styled.div`
@@ -22,7 +22,7 @@ export const TopBarWrapper = styled.div`
   background-color: #fff;
   transition: 0.25s ease-in-out;
   width: 1385px;
-  padding: 25px 15px;
+  padding: 0px 15px;
   margin: 0 auto;
   @media (max-width: 1420px) {
     width: 1170px;
@@ -44,10 +44,12 @@ export const MobileMenu = styled.div`
 `;
 
 export const Logo = styled.div`
-  width: 150px;
+  width: 200px;
   margin-left: auto;
   margin-right: 40px;
   flex-shrink: 0;
+  margin-top: 5px;
+  margin-bottom: 10px;
   @media (max-width: 1024px) {
     margin-right: 25px;
   }
@@ -84,7 +86,7 @@ export const MenuItem = styled.li`
   a {
     padding: 5px 10px;
     white-space: nowrap;
-    font-size: ${themeGet('fontSizes.4', '16')}px;
+    font-size: ${themeGet('fontSizes.5', '16')}px;
     font-weight: ${themeGet('fontWeights.4', '500')};
     color: ${themeGet('colors.textColor', '#121213')};
     transition: 0.15s ease-in-out;

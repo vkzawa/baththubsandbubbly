@@ -20,7 +20,7 @@ import HeaderWrapper, {
 } from './navbar.style';
 import logoImage from '../../images/logo.svg';
 
-import { IoLogoFacebook, IoLogoTwitter, IoLogoInstagram } from 'react-icons/io';
+import { IoLogoInstagram } from 'react-icons/io';
 
 type NavbarProps = {
 	className?: string;
@@ -28,37 +28,15 @@ type NavbarProps = {
 
 const MenuItems = [
 	{
-		label: 'Home',
-		url: '/',
-	},
-	{
 		label: 'About',
-		url: '/about',
-	},
-	{
-		label: 'Contact',
-		url: '/contact',
-	},
-	{
-		label: '404 Page',
-		url: '/404',
+		url: '/2021/welcome-to-bathtubs-and-bubbly/',
 	},
 ];
 
 const SocialLinks = [
 	{
-		icon: <IoLogoFacebook />,
-		url: 'https://www.facebook.com/redqinc/',
-		tooltip: '',
-	},
-	{
 		icon: <IoLogoInstagram />,
-		url: 'https://www.instagram.com/redqinc/',
-		tooltip: '',
-	},
-	{
-		icon: <IoLogoTwitter />,
-		url: 'https://twitter.com/redqinc',
+		url: 'https://www.instagram.com/heyerikak/',
 		tooltip: '',
 	},
 ];
@@ -104,7 +82,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({
 					</Logo>
 
 					<MenuWrapper>
-						<Menu items={MenuItems} />
+						{/* <Menu items={MenuItems} /> */}
 					</MenuWrapper>
 
 					<NavSearchButton

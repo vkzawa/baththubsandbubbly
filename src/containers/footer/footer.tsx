@@ -13,45 +13,8 @@ import FooterWrapper, {
 import LogoImage from '../../images/logo.svg';
 
 import {
-  IoLogoFacebook,
-  IoLogoTwitter,
   IoLogoInstagram,
-  IoLogoLinkedin,
 } from 'react-icons/io';
-
-const MenuItems = [
-  {
-    label: 'About',
-    url: '/about',
-  },
-  {
-    label: 'Contact',
-    url: '/contact',
-  },
-  {
-    label: '404 Page',
-    url: '/404',
-  },
-];
-
-const SocialLinks = [
-  {
-    icon: <IoLogoFacebook />,
-    url: 'https://www.facebook.com/redqinc/',
-  },
-  {
-    icon: <IoLogoInstagram />,
-    url: 'https://www.instagram.com/redqinc/',
-  },
-  {
-    icon: <IoLogoTwitter />,
-    url: 'https://twitter.com/redqinc',
-  },
-  {
-    icon: <IoLogoLinkedin />,
-    url: 'https://www.linkedin.com/company/redqinc/',
-  },
-];
 
 type FooterProps = {
   children: React.ReactNode;
@@ -63,15 +26,19 @@ const Footer: React.FunctionComponent<FooterProps> = ({
 }) => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
-        group(field: frontmatter___categories) {
-          fieldValue
+      allWpCategory(filter: {slug: {ne: "uncategorized"}}) {
+        edges {
+          node {
+            id
+            name
+            uri
+          }
         }
       }
     }
   `);
 
-  const Category = data.allMarkdownRemark.group;
+  const categories = data.allWpCategory.edges;
 
   return (
     <FooterWrapper {...props}>
@@ -79,23 +46,19 @@ const Footer: React.FunctionComponent<FooterProps> = ({
         <FooterCol>
           <Logo>
             <Link to="/">
-              <img src={LogoImage} alt="logo" />
+              <img src={LogoImage} alt="logo" width="150" />
             </Link>
           </Logo>
 
-          <Infos>23 King Street, 5th Avenue, New York</Infos>
-          <Infos>+1-2345-6789-9</Infos>
-          <br />
           <Infos>
-            Copyright &copy;&nbsp;
-            <a href="https://redq.io/" target="_blank">
-              {' '}
-              RedQ, Inc.
-            </a>
+            &copy; Copyright 2021 Erika Kurzawa
           </Infos>
         </FooterCol>
 
-        <FooterCol>
+        {/* <FooterCol>
+        </FooterCol> */}
+
+        {/* <FooterCol>
           <FooterTitle>Quick Links</FooterTitle>
 
           <FooterContent>
@@ -105,25 +68,19 @@ const Footer: React.FunctionComponent<FooterProps> = ({
               </Menu>
             ))}
           </FooterContent>
-        </FooterCol>
+        </FooterCol> */}
 
-        <FooterCol>
+        {/* <FooterCol>
           <FooterTitle>Category</FooterTitle>
 
           <FooterContent>
-            {Category.slice(0, 4).map((cat: any, index: any) => (
-              <Menu key={index} to={`/category/${cat.fieldValue}`}>
-                {cat.fieldValue}
+            {categories.map((category: any) => (
+              <Menu key={category.node.id} to={category.node.uri}>
+                {category.node.name}
               </Menu>
             ))}
           </FooterContent>
-        </FooterCol>
-
-        <FooterCol>
-          <FooterTitle>Follow Us</FooterTitle>
-
-          <SocialProfile items={SocialLinks} />
-        </FooterCol>
+        </FooterCol> */}
       </FooterWrapperInner>
     </FooterWrapper>
   );

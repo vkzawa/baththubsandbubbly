@@ -9,8 +9,8 @@ const colors = {
 	inactiveBG: '#e6e6e6', // 7
 	borderColor: '#DBDBDB', // 8
 	lightBorderColor: '#ededed', //9
-	primary: '#FF2E55', // 10
-	primaryHover: '#D10068', // 11
+	primary: '#E07B77', // 10
+	primaryHover: '#e8504a', // 11
 	textLightColor: '#5e5e5e', // 3
 };
 

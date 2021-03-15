@@ -16,7 +16,7 @@ import {
 interface PostCardProps {
 	image?: any;
 	title: string;
-	postColor: string;
+	postColor?: string;
 	url: string;
 	date?: string;
 	tags?: [];
@@ -70,7 +70,7 @@ const PostCard: React.FunctionComponent<PostCardProps> = ({
 			>
 				{categories == null ? null : (
 					<PostCategory categoryColor={postColor}>
-						{categories &&
+						{Boolean(categories.length) &&
 							categories.map((cat, index) => (
 								<Link key={index} to={`/category/${_.kebabCase(cat)}/`}>
 									{cat}

@@ -3,10 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import SocialProfile from '../../components/social-profile/social-profile';
 import {
-	IoLogoFacebook,
-	IoLogoTwitter,
 	IoLogoInstagram,
-	IoLogoLinkedin,
 } from 'react-icons/io';
 import {
 	AboutWrapper,
@@ -18,24 +15,9 @@ import {
 
 const SocialLinks = [
 	{
-		icon: <IoLogoFacebook />,
-		url: 'https://www.facebook.com/redqinc/',
-		tooltip: 'Facebook',
-	},
-	{
 		icon: <IoLogoInstagram />,
-		url: 'https://www.instagram.com/redqinc/',
+		url: 'https://www.instagram.com/heyerikak/',
 		tooltip: 'Instagram',
-	},
-	{
-		icon: <IoLogoTwitter />,
-		url: 'https://twitter.com/redqinc',
-		tooltip: 'Twitter',
-	},
-	{
-		icon: <IoLogoLinkedin />,
-		url: 'https://www.linkedin.com/company/redqinc/',
-		tooltip: 'Linked In',
 	},
 ];
 

@@ -5,6 +5,7 @@ import { Link } from 'gatsby';
 const FooterWrapper = styled.footer`
 	width: 100%;
 	padding: 120px 0 50px;
+
 	@media (max-width: 1024px) {
 		padding-top: 100px;
 	}
@@ -16,6 +17,11 @@ const FooterWrapper = styled.footer`
 export const FooterWrapperInner = styled.div`
 	display: flex;
 	margin: 0 -15px;
+	border-top: 0.5px solid ${themeGet('colors.borderColor', '#ccc')};
+	padding-top: 1em;
+	align-items: flex-start;
+	justify-content: center;
+
 	@media (max-width: 1024px) {
 		flex-wrap: wrap;
 		margin-bottom: -50px;
@@ -23,15 +29,18 @@ export const FooterWrapperInner = styled.div`
 `;
 
 export const FooterCol = styled.div`
-	flex: 0 0 20%;
-	max-width: 20%;
+	flex: 0 0 100%;
+	max-width: 100%;
 	padding: 0 15px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 
-	&:first-child {
+	/* &:first-child {
 		flex: 0 0 40%;
 		max-width: 40%;
-	}
-	@media (max-width: 1024px) {
+	} */
+	/* @media (max-width: 1024px) {
 		flex: 0 0 33.33%;
 		max-width: 33.33%;
 		margin-bottom: 50px;
@@ -67,14 +76,15 @@ export const FooterCol = styled.div`
 			max-width: 100%;
 			align-items: flex-start;
 		}
-	}
+	} */
 `;
 
 export const Logo = styled.div`
 	width: 100%;
 	display: flex;
-	align-items: center;
-	margin-bottom: 15px;
+	margin-bottom: 0.5em;
+	justify-content: center;
+
 	img {
 		max-width: 100%;
 	}

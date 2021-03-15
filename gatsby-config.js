@@ -4,11 +4,11 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `StoryHub`,
-    author: `Monnisa`,
-    about: `Every company has a story to tell, so break out your storytelling skills from that random English class you took years ago and put them to work on your “About Us” page. Using descriptive and emotive copy and gorgeous graphics, an “About Us” page with a story works.`,
-    description: `A Gatsby Blog`,
-    siteUrl: `https://storyhub-agency-tarex.redq.now.sh/`,
+    title: `Bathtubs & Bubbly`,
+    author: `Erika Kurzawa`,
+    about: ``,
+    description: `A blog about soaking in bathtubs while sipping on bubbly.`,
+    siteUrl: `https://bathtubsandbubbly.com`,
   },
   plugins: [
     {
@@ -16,6 +16,18 @@ module.exports = {
       options: {
         minify: false, // Breaks styles if not set to false
       },
+    },
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        url: `${process.env.WP_API_URL}`,
+        auth: {
+          htaccess: {
+            username: `${process.env.WP_API_AUTH_USER}`,
+            password: `${process.env.WP_API_AUTH_PASS}`,
+          },
+        },
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -79,25 +91,25 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sharp`,
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        //trackingId:process.env.GOOGLE_ANALYTICS_TRACKING_ID,// `ADD YOUR TRACKING ID HERE`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     //trackingId:process.env.GOOGLE_ANALYTICS_TRACKING_ID,// `ADD YOUR TRACKING ID HERE`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-feed`,
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `StoryHub - Romantic Blog`,
-        short_name: `StoryHub`,
+        name: `Bathtubs and Bubbly`,
+        short_name: `BathtubsAndBubbly`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#E07B77`,
         display: `minimal-ui`,
-        icon: `content/assets/favicon.png`,
+        icon: `content/assets/favicon.svg`,
       },
     },
     {
@@ -109,26 +121,26 @@ module.exports = {
     {
       resolve: `gatsby-plugin-lodash`,
     },
-    {
-      resolve: 'gatsby-plugin-mailchimp',
-      options: {
-        endpoint: process.env.MAILCHIMP_ENDPOINT, // add your MC list endpoint here; see instructions below
-      },
-    },
-    {
-      resolve: `gatsby-source-instagram`,
-      options: {
-        username: process.env.INSTAGRAM_USER_NAME_ID,
-        access_token: process.env.INSTAGRAM_ACCESS_TOKEN,
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-mailchimp',
+    //   options: {
+    //     endpoint: process.env.MAILCHIMP_ENDPOINT, // add your MC list endpoint here; see instructions below
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-instagram`,
+    //   options: {
+    //     username: process.env.INSTAGRAM_USER_NAME_ID,
+    //     access_token: process.env.INSTAGRAM_ACCESS_TOKEN,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-web-font-loader`,
       options: {
         google: {
           families: [
-            'Poppins:100,200,300,400,500,600,700',
-            'Roboto:100,300,400,500,600,700',
+            'Dancing+Script:100,200,300,400,500,600,700',
+            'Lato:100,300,400,500,600,700',
           ],
         },
       },

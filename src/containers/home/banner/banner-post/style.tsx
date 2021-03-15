@@ -8,4 +8,5 @@ export const BannerPostWrapper = styled.div`
 export const BannerPostRow = styled.div`
 	display: flex;
 	flex-wrap: wrap;
+	max-width: 100%;
 `;

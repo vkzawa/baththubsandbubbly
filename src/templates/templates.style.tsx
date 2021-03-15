@@ -330,7 +330,7 @@ export const TagPageHeading = styled.div`
 `;
 
 export const TagName = styled.h1`
-	font-size: 30px;
+	font-size: 42px;
 	font-weight: 700;
 	text-transform: capitalize;
 	color: ${themeGet('colors.primary', '#FF2D54')};

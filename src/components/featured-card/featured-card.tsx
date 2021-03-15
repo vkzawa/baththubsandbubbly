@@ -67,7 +67,7 @@ const FeaturedCard: React.FunctionComponent<FeaturedCardProps> = ({
 			<PostDetails className='post_details'>
 				{categories == null ? null : (
 					<PostCategory categoryColor={postColor}>
-						{categories &&
+						{Boolean(categories.length) &&
 							categories.map((cat, index) => (
 								<Link key={index} to={`/category/${_.kebabCase(cat)}/`}>
 									{cat}

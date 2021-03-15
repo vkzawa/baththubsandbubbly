@@ -1,19 +1,19 @@
 import * as React from "react";
-import RomanticBlogWrapper from "./style";
+import BlogWrapper from "./style";
 import Posts from "./posts";
 import FeaturedPosts from "./featured-post";
 import Banner from "./banner";
 
-type RomanticBlogProps = {};
+type BlogProps = {};
 
-const RomanticBlog: React.FunctionComponent<RomanticBlogProps> = (props) => {
+const Blog: React.FunctionComponent<BlogProps> = (props) => {
 	return (
-		<RomanticBlogWrapper {...props}>
+		<BlogWrapper {...props}>
 			<Banner />
 			<FeaturedPosts />
 			<Posts />
-		</RomanticBlogWrapper>
+		</BlogWrapper>
 	);
 };
 
-export default RomanticBlog;
+export default Blog;

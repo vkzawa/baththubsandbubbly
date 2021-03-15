@@ -49,35 +49,21 @@ export const PostDetailsWrapper = styled.div`
 
 export const PostTitle = styled.h1`
 	text-align: center;
-	font-size: 35px;
-	font-weight: ${themeGet('fontWeights.5', '600')};
-	color: ${themeGet('colors.textColor', '#121213')};
-	line-height: 1.45;
-	margin-bottom: 25px;
+	color: ${themeGet('colors.primary', '#121213')};
+	line-height: 1;
+	margin-bottom: 0.25em;
 	font-family: ${themeGet('fontFamily.0', "'Poppins', sans-serif")};
-	@media (max-width: 1200px) {
-		font-size: 30px;
-	}
-	@media (max-width: 1024px) {
-		font-size: 28px;
-		margin-bottom: 20px;
-	}
-	@media (max-width: 767px) {
-		font-size: ${themeGet('fontSizes.6', '24')}px;
-		margin-bottom: 15px;
-	}
-	@media (max-width: 575px) {
-		font-size: 22px;
-	}
-	@media (max-width: 460px) {
-		font-size: 20px;
+	font-size: 32px;
+
+	@media (min-width: 720px) {
+		font-size: 48px;
 	}
 `;
 
 export const PostDate = styled.div`
 	text-align: center;
 	font-size: ${themeGet('fontSizes.5', '18')}px;
-	color: ${themeGet('colors.textColor', '#121213')};
+	color: ${themeGet('colors.lightTextColor', '#121213')};
 	margin-bottom: 50px;
 	@media (max-width: 1024px) {
 		font-size: ${themeGet('fontSizes.4', '16')}px;
@@ -107,10 +93,10 @@ export const PostCategory = styled.span`
 	}
 	a {
 		font-size: 12px;
-		background-color: ${themeGet('primary', '#FF2E55')};
+		background-color: ${themeGet('colors.primary', '#FF2E55')};
 		font-weight: ${themeGet('fontWeights.6', '700')};
 		text-transform: uppercase;
-		color: ${themeGet('white', '#FFFFFF')};
+		color: ${themeGet('colors.textColor', '#000000')};
 		padding: 2px 10px;
 		display: inline-block;
 		margin: 0 5px 5px;
@@ -121,7 +107,7 @@ export const PostCategory = styled.span`
 `;
 
 export const PostPreview = styled.div`
-	margin-top: 30px;
+	margin: 30px -30px 0;
 	position: relative;
 	@media (max-width: 1200px) {
 		margin-top: 40px;
@@ -140,7 +126,7 @@ export const PostDescriptionWrapper = styled.div`
 `;
 
 export const PostDescription = styled.div`
-	font-size: ${themeGet('fontSizes.4', '16')}px;
+	font-size: ${themeGet('fontSizes.6', '16')}px;
 	@media (max-width: 767px) {
 		font-size: ${themeGet('fontSizes.3', '15')}px;
 	}
@@ -152,7 +138,9 @@ export const PostDescription = styled.div`
 	}
 
 	p {
-		font-size: ${themeGet('fontSizes.4', '16')}px;
+		font-size: ${themeGet('fontSizes.6', '16')}px;
+		font-weight: ${themeGet('fontWeights.2', '300')};
+		font-family: 'Lato';
 		color: ${themeGet('colors.textLightColor', '#5e5e5e')};
 		margin-bottom: 25px;
 		@media (max-width: 767px) {
@@ -212,7 +200,7 @@ export const PostDescription = styled.div`
 	}
 
 	blockquote {
-		font-family: 'Poppins', sans-serif;
+		font-family: 'Lato', sans-serif;
 		font-size: 21px;
 		font-weight: 500;
 		line-height: 2;
@@ -299,3 +287,243 @@ export const PostTags = styled.div`
 		color: ${themeGet('primary', '#D10068')};
 	}
 `;
+
+export const RawHTML = styled.div`
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	letter-spacing: 0.05em;
+	font-weight: ${themeGet('fontWeights.2', '300')};
+	font-family: 'Lato';
+	color: ${themeGet('colors.textLightColor', '#5e5e5e')};
+	margin-bottom: 25px;
+	line-height: 1.625;
+	font-size: ${themeGet('fontSizes.6', '16')}px;
+
+	@media (max-width: 767px) {
+		font-size: 16px;
+		line-height: 1.25;
+	}
+
+	:target {
+		&:before {
+			content: '';
+			display: block;
+			position: relative;
+			left: 0;
+			margin-top: -130px;
+			padding-top: 130px;
+			height: 1px;
+			visibility: hidden;
+			pointer-events: none;
+			z-index: -1;
+		}
+	}
+
+	> *:last-child {
+		margin-bottom: 0;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-top: 1rem;
+		text-align: left;
+	}
+	/* fontSizes: [10, 12, 14, 15, 16, 18, 24, 30, 36, 48, 80, 96], */
+
+	h1 {
+		font-size: ${themeGet('fontSizes.10', '16')}px;
+	}
+	h2 {
+		font-size: ${themeGet('fontSizes.9', '16')}px;
+	}
+	h3 {
+		font-size: ${themeGet('fontSizes.8', '16')}px;
+	}
+	h4 {
+		font-size: ${themeGet('fontSizes.7', '16')}px;
+	}
+	h5 {
+		font-size: ${themeGet('fontSizes.6', '16')}px;
+	}
+	h6 {
+		font-size: ${themeGet('fontSizes.5', '16')}px;
+	}
+
+	p {
+		margin-bottom: 1em;
+		line-height: 1.625;
+		font-size: ${themeGet('fontSizes.6', '16')}px;
+
+		@media (max-width: 767px) {
+			font-size: 18px;
+		}
+	}
+
+	a,
+	a:visited {
+		color: ${themeGet('colors.primary', '#000')};
+		display: inline-block;
+		font-weight: bold;
+	}
+
+	b,
+	strong {
+		font-weight: bold;
+	}
+
+	i,
+	em {
+		font-style: italic;
+	}
+
+	mark {
+		background-color: ${themeGet('colorStyles.primary.backgroundColor', '#d0d0d0')};
+	}
+
+	hr {
+		display: block;
+		width: 100%;
+		height: 2px;
+		background-color: ${themeGet('colorStyles.primary.backgroundColor', '#d0d0d0')};
+		border: none;
+	}
+
+	abbr {
+		text-decoration-color: ${themeGet('colorStyles.primary.backgroundColor', '#d0d0d0')};
+		cursor: help;
+	}
+
+	small {
+		font-size: 0.8em;
+		line-height: 1.2;
+	}
+
+	blockquote {
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 1em;
+		font-size: 1.4em;
+		font-weight: bold;
+		max-width: 800px;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		text-align: center;
+
+		> * {
+			font-size: inherit;
+			margin: 0;
+		}
+	}
+
+	figure {
+		> figcaption {
+			font-size: 0.6em;
+			font-style: italic;
+		}
+	}
+
+	code {
+		display: block;
+		width: 100%;
+		overflow-x: auto;
+		background-color: rgba(black, 0.1);
+		padding: 0.5em;
+	}
+
+	> * + h1 {
+		margin-top: 20px;
+	}
+
+	h1 + h2 {
+		margin-top: 0;
+	}
+
+	ol,
+	ul {
+		padding-left: 1.5em;
+	}
+
+	ul ul {
+		margin-bottom: 0;
+		margin-top: 10px;
+		padding-left: 20px;
+
+
+		&::marker{
+			color: ${themeGet('colorStyles.primary.backgroundColor', '#d0d0d0')};
+			}
+	}
+
+	li {
+		margin-bottom: 10px;
+
+		&::marker{
+			color: ${themeGet('colorStyles.primary.backgroundColor', '#d0d0d0')};
+		}
+	}
+
+	ol li {
+		&::marker{
+			color: ${themeGet('colorStyles.primary.backgroundColor', '#d0d0d0')};
+		}
+	}
+
+	ol {
+		list-style-type: decimal;
+	}
+
+	ol ol {
+		list-style-type: lower-alpha;
+	}
+
+	ol ol ol {
+		list-style-type: lower-roman;
+	}
+
+	ul {
+		list-style-type: disc;
+	}
+
+	ul ul {
+		list-style-type: circle;
+	}
+
+	img {
+		height: auto;
+		max-width: 100%;
+	}
+
+	figure {
+		margin: 0;
+	}
+
+	.alignright,
+	.alignleft {
+		max-width: 50%;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	.alignright {
+		float: right;
+		margin-right: 0;
+		margin-left: 1em;
+	}
+
+	.alignleft {
+		float: left;
+		margin-left: 0;
+		margin-right: 1em;
+	}
+
+	.has-text-align-center { text-align: center; }
+	.has-text-align-right { text-align: right; }
+	.has-text-align-justify { text-align: justify; }
+`

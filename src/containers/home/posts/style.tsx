@@ -75,7 +75,7 @@ export const LoadMoreButton = styled.div`
 		font-weight: 700;
 		background-color: ${themeGet('primary', '#FF2D54')};
 		font-size: 14px;
-		font-family: ${themeGet('fontFamily.1', "'Roboto', sans-serif")};
+		font-family: ${themeGet('fontFamily.1', "'Lato', sans-serif")};
 		&:hover {
 			background-color: ${themeGet('black', '#121213')};
 		}

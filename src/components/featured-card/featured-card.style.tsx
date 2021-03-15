@@ -133,7 +133,7 @@ export const PostCategory = styled('span')<ColorProps>`
 				: themeGet('colors.primary', '#FF2E55')};
 		font-weight: ${themeGet('fontWeights.6', '700')};
 		text-transform: uppercase;
-		color: ${themeGet('white', '#FFFFFF')};
+		color: rgba(0, 0, 0, 0.8);
 		padding: 2px 10px;
 		display: inline-block;
 		margin: 5px;

@@ -16,23 +16,31 @@ function Search() {
 
 	const data = useStaticQuery(graphql`
 		query {
-			allMarkdownRemark {
+			allWpPost {
+				totalCount
 				edges {
 					node {
-						fields {
-							slug
-						}
-						frontmatter {
-							date(formatString: "MMMM D, YYYY")
-							title
-							description
-							tags
-							cover {
-								childImageSharp {
-									fluid(maxWidth: 62, maxHeight: 62, quality: 90) {
-										...GatsbyImageSharpFluid_withWebp_tracedSVG
+						id
+						slug
+						uri
+						title
+						date(formatString: "MMMM DD, YYYY")
+						excerpt
+						featuredImage {
+							node {
+								localFile {
+									childImageSharp {
+										fluid(maxWidth: 62, maxHeight: 62, quality: 90) {
+											...GatsbyImageSharpFluid_withWebp_tracedSVG
+										}
 									}
 								}
+							}
+						}
+						categories {
+							nodes {
+								name
+								uri
 							}
 						}
 					}
@@ -41,7 +49,7 @@ function Search() {
 		}
 	`);
 
-	const dataset = data.allMarkdownRemark.edges;
+	const dataset = data.allWpPost.edges;
 
 	/**
 	 * handles the input change and perfom a search with js-search
@@ -63,8 +71,7 @@ function Search() {
 			let data: any = [];
 			dataset.forEach(({ node }: any) => {
 				let formatedData = {
-					...node.frontmatter,
-					slug: node.fields.slug,
+					...node,
 				};
 				data.push(formatedData);
 			});
@@ -109,12 +116,10 @@ function Search() {
 						{queryResults.map((item: any) => {
 							return (
 								<PostList
-									key={item.slug}
+									key={item.id}
 									title={item.title}
-									url={item.slug}
-									image={
-										item.cover == null ? null : item.cover.childImageSharp.fluid
-									}
+									url={item.uri}
+									image={item.featuredImage?.node?.localFile?.childImageSharp?.fluid || null}
 									date={item.date}
 									tags={item.tags}
 								/>

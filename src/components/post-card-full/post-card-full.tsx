@@ -57,7 +57,7 @@ const PostCardFull: React.FunctionComponent<PostCardProps> = ({
 				<PostDetailsInner>
 					{categories == null ? null : (
 						<PostCategory categoryColor={postColor ? postColor : 'null'}>
-							{categories &&
+							{Boolean(categories.length) &&
 								categories.map((cat, index) => (
 									<Link key={index} to={`/category/${_.kebabCase(cat)}/`}>
 										{cat}

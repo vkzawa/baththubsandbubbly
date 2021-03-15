@@ -116,7 +116,7 @@ export const PostDetails = styled.div`
 `;
 
 export const PostTitle = styled.h2`
-	font-size: 22px;
+	font-size: 42px;
 	font-weight: ${themeGet('fontWeights.5', '600')};
 	color: ${themeGet('colors.textColor', '#121213')};
 	line-height: 1.65;
@@ -191,7 +191,7 @@ export const PostCategory = styled('span')<ColorProps>`
 				: themeGet('colors.primary', '#FF2E55')};
 		font-weight: ${themeGet('fontWeights.6', '700')};
 		text-transform: uppercase;
-		color: ${themeGet('white', '#FFFFFF')};
+		color: ${themeGet('colors.textColor', '#000000')};
 		padding: 2px 10px;
 		display: inline-block;
 		margin: 5px;
