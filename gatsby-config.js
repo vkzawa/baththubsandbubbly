@@ -30,62 +30,6 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 590,
-              linkImagesToOriginal: true,
-            },
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          {
-            resolve: `gatsby-remark-katex`,
-            options: {
-              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
-              strict: `ignore`,
-            },
-          },
-          {
-            resolve: `gatsby-remark-mermaid`,
-          },
-          {
-            resolve: `gatsby-remark-prismjs`,
-          },
-          {
-            resolve: `gatsby-remark-copy-linked-files`,
-          },
-          {
-            resolve: `gatsby-remark-smartypants`,
-          },
-          {
-            resolve: `gatsby-remark-reading-time`,
-          },
-        ],
-      },
-    },
-    {
       resolve: `gatsby-transformer-sharp`,
     },
     {
@@ -97,9 +41,9 @@ module.exports = {
     //     //trackingId:process.env.GOOGLE_ANALYTICS_TRACKING_ID,// `ADD YOUR TRACKING ID HERE`,
     //   },
     // },
-    {
-      resolve: `gatsby-plugin-feed`,
-    },
+    // {
+    //   resolve: `gatsby-plugin-feed`,
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

@@ -1,12 +1,11 @@
 const path = require(`path`);
 const _ = require('lodash');
-const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
-  const blogList = path.resolve(`./src/templates/blog-list.tsx`);
+  const blogPage = path.resolve(`./src/templates/blog-page.tsx`);
   const tagTemplate = path.resolve(`./src/templates/tags.tsx`);
   const categoryTemplate = path.resolve(`./src/templates/category.tsx`);
 
@@ -97,7 +96,7 @@ exports.createPages = ({ graphql, actions }) => {
     pages.forEach((page, index) => {
       createPage({
         path: page.node.uri,
-        component: blogPost,
+        component: blogPage,
         context: {
           slug: page.node.slug,
         },
