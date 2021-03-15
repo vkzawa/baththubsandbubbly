@@ -10,6 +10,7 @@
     "disqus-react": "^1.0.10",
     "formik": "^2.1.5",
     "gatsby": "^3.0.4",
+    "gatsby-core-utils": "^2.0.0",
     "gatsby-image": "^3.0.0",
     "gatsby-plugin-gatsby-cloud": "^2.0.0",
     "gatsby-plugin-google-analytics": "^3.0.0",
