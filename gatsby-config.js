@@ -7,7 +7,7 @@ module.exports = {
     title: `Bathtubs & Bubbly`,
     author: `Erika Kurzawa`,
     about: ``,
-    description: `A blog about soaking in bathtubs while sipping on bubbly.`,
+    description: `Welcome to Bathtubs and Bubbly—A bubbly community for folks who love to soak!`,
     siteUrl: `https://bathtubsandbubbly.com`,
   },
   plugins: [
