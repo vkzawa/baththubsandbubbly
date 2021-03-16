@@ -24,10 +24,14 @@ export const BannerInner = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-left: -20px;
+  margin-right: -20px;
+  flex-wrap: wrap;
 `;
 
 export const BannerPostArea = styled.div`
-  width: 75%;
+  width: 50%;
+  padding: 20px;
 
   @media (max-width: 1000px) {
     width: 100%;

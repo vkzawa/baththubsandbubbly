@@ -14,30 +14,27 @@ import { PostTitle, RawHTML } from '../../../components/post-details/post-detail
 type BannerProps = {};
 
 const Banner: React.FunctionComponent<BannerProps> = () => {
-	// const data = useStaticQuery(graphql`
-	// 	`);
+	const data = useStaticQuery(graphql`
+		query {
+			wpPage(slug: {eq: "home"}) {
+				slug
+				content
+				title
+			}
+		}
+	`);
 
-	// const blurb = data.wpPage;
+	const blurb = data.wpPage;
 	return (
 		<BannerWrapper>
 			<BannerInner>
 				<BannerPostArea>
 					<BannerPosts />
 				</BannerPostArea>
-				{/* <TrendingPosts>
-					<Title>Trending Posts</Title>
-					{posts.map(({ node }: any) => {
-						const title = node.title || node.slug;
-						return (
-							<TrendingPost
-								key={node.id}
-								title={title}
-								url={node.uri}
-								tags={node.tags}
-							/>
-						);
-					})}
-				</TrendingPosts> */}
+				<BannerPostArea>
+					<PostTitle>{blurb.title}</PostTitle>
+					<RawHTML dangerouslySetInnerHTML={{ __html: blurb.content }} />
+				</BannerPostArea>
 			</BannerInner>
 		</BannerWrapper>
 	);
