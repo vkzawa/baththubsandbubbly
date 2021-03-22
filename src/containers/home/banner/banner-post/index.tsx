@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import PostBannerCard from '../../../../components/post-banner-card/post-banner-card';
 import { BannerPostWrapper, BannerPostRow } from './style';
+import PostCard from '../../../../components/post-card/post-card';
 
 type BannerPostsProps = {};
 
@@ -52,11 +52,11 @@ const BannerPosts: React.FunctionComponent<BannerPostsProps> = () => {
 				{posts.map(({ node }: any) => {
 					const title = node.title || node.slug;
 					return (
-						<PostBannerCard
+						<PostCard
 							key={node.id}
+							postColor={'#FFCCCA'}
 							title={title}
 							image={node.featuredImage?.node?.localFile?.childImageSharp?.fluid || null}
-							imageType="fluid"
 							url={node.uri}
 							categories={node.categories}
 							date={node.date}

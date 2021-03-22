@@ -109,8 +109,8 @@ const PostDetails: React.FunctionComponent<PostDetailsProps> = ({
 				{tags == null ? null : (
 					<PostTags>
 						{tags.map((tag, index) => (
-							<Link key={index} to={`/tags/${_.kebabCase(tag)}/`}>
-								{`#${tag}`}
+							<Link key={index} to={tag.uri}>
+								{tag.name}
 							</Link>
 						))}
 					</PostTags>

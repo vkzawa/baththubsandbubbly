@@ -71,9 +71,9 @@ const PostCard: React.FunctionComponent<PostCardProps> = ({
 				{categories == null ? null : (
 					<PostCategory categoryColor={postColor}>
 						{Boolean(categories.length) &&
-							categories.map((cat, index) => (
-								<Link key={index} to={`/category/${_.kebabCase(cat)}/`}>
-									{cat}
+							categories.map((category, index) => (
+								<Link key={index} to={category.uri}>
+									{category.name}
 								</Link>
 							))}
 					</PostCategory>

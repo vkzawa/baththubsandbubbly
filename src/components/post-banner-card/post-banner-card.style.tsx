@@ -25,11 +25,11 @@ export const PostPreview = styled.div`
 `;
 
 export const PostDetails = styled.div`
-	width: calc(100% - 120px);
+	width: calc(100% - 40px);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 25px 50px;
+	padding: 25px;
 	background-color: ${themeGet('colors.white', '#FFFFFF')};
 	margin-top: -125px;
 	margin-left: auto;

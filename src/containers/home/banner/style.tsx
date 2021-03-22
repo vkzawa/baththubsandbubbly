@@ -24,17 +24,31 @@ export const BannerInner = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-left: -20px;
-  margin-right: -20px;
   flex-wrap: wrap;
 `;
 
 export const BannerPostArea = styled.div`
-  width: 50%;
-  padding: 20px;
+  width: 40%;
+  padding-top: 20px;
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 1000px) {
     width: 100%;
+  }
+`;
+
+export const BannerBlurbArea = styled.div`
+  background-color: #fef6e5;
+  width: calc(60% + 30px);
+  padding: 30px;
+  padding-left: 60px;
+  margin-left: -30px;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 1000px) {
+    display: none;
   }
 `;
 

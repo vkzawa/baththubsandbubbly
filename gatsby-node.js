@@ -15,6 +15,7 @@ exports.createPages = ({ graphql, actions }) => {
         totalCount
         edges {
           node {
+            id
             slug
             uri
           }
@@ -23,6 +24,7 @@ exports.createPages = ({ graphql, actions }) => {
       allWpCategory {
         edges {
           node {
+            id
             slug
             uri
           }
@@ -31,6 +33,7 @@ exports.createPages = ({ graphql, actions }) => {
       allWpTag {
         edges {
           node {
+            id
             slug
             uri
           }
@@ -39,6 +42,7 @@ exports.createPages = ({ graphql, actions }) => {
       allWpPage {
         edges {
           node {
+            id
             slug
             uri
           }
@@ -60,6 +64,7 @@ exports.createPages = ({ graphql, actions }) => {
         path: post.node.uri,
         component: blogPost,
         context: {
+          id: post.node.id,
           slug: post.node.slug,
           previous,
           next,
@@ -74,6 +79,7 @@ exports.createPages = ({ graphql, actions }) => {
         path: category.node.uri,
         component: categoryTemplate,
         context: {
+          id: category.node.id,
           slug: category.node.slug,
         },
       });
@@ -86,6 +92,7 @@ exports.createPages = ({ graphql, actions }) => {
         path: tag.node.uri,
         component: tagTemplate,
         context: {
+          id: tag.node.id,
           slug: tag.node.slug,
         },
       });
@@ -98,6 +105,7 @@ exports.createPages = ({ graphql, actions }) => {
         path: page.node.uri,
         component: blogPage,
         context: {
+          id: page.node.id,
           slug: page.node.slug,
         },
       });

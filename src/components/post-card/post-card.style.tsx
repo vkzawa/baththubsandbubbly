@@ -9,6 +9,8 @@ type ColorProps = {
 export const PostCardWrapper = styled.div`
 	position: relative;
 	overflow: hidden;
+	width: 100%;
+
 	&:hover {
 		.post_preview {
 			a {
@@ -27,12 +29,7 @@ export const PostPreviewArea = styled('div')<ColorProps>`
 	@media (max-width: 1024px) {
 		padding-right: 15px;
 	}
-	@media (min-width: 576px) and (max-width: 767px) {
-		padding-right: 10px;
-	}
-	@media (max-width: 460px) {
-		padding-right: 10px;
-	}
+
 	&:before {
 		position: absolute;
 		content: '';
@@ -47,14 +44,6 @@ export const PostPreviewArea = styled('div')<ColorProps>`
 		@media (max-width: 1024px) {
 			left: 15px;
 			top: 15px;
-		}
-		@media (min-width: 576px) and (max-width: 767px) {
-			left: 10px;
-			top: 10px;
-		}
-		@media (max-width: 460px) {
-			left: 10px;
-			top: 10px;
 		}
 		background-color: ${(props) =>
 			props.postColor
@@ -75,75 +64,52 @@ export const PostDetails = styled.div`
 	width: calc(100% - 60px);
 	display: flex;
 	flex-direction: column;
-	padding: 0px 30px 45px;
+	padding: 20px;
+	padding-left: 0;
 	background-color: ${themeGet('colors.white', '#FFFFFF')};
 	position: relative;
 	z-index: 1;
-	@media (max-width: 1420px) {
-		padding: 0px 20px 20px;
-		width: calc(100% - 40px);
-	}
-	@media (max-width: 1024px) {
-		padding: 0px 20px 0px;
-		width: calc(100% - 30px);
-	}
-	@media (min-width: 576px) and (max-width: 767px) {
-		padding-left: 10px;
-		padding-right: 10px;
-		width: calc(100% - 20px);
-	}
-	@media (max-width: 460px) {
-		padding-left: 10px;
-		padding-right: 10px;
-		width: calc(100% - 20px);
-	}
+
 	&.post_have_thumbnail {
 		margin-top: -115px;
-		padding-top: 25px;
-		@media (max-width: 1420px) {
-			padding-top: 20px;
-			margin-top: -100px;
-		}
-		@media (max-width: 1024px) {
-			padding-top: 15px;
-			margin-top: -70px;
-		}
+		min-height: 145px;
+
 		@media (max-width: 767px) {
-			padding-top: 10px;
-			margin-top: -40px;
+			margin-top: -70px;
+			min-height: 70px;
 		}
 	}
 `;
 
 export const PostTitle = styled.h2`
-	font-size: 42px;
-	font-weight: ${themeGet('fontWeights.5', '600')};
+	font-size: 28px;
+	font-weight: ${themeGet('fontWeights.3', '300')};
 	color: ${themeGet('colors.textColor', '#121213')};
-	line-height: 1.65;
-	margin-bottom: 12px;
-	font-family: ${themeGet('fontFamily.0', "'Poppins', sans-serif")};
+	/* line-height: 1.65; */
+	margin-bottom: 5px;
+	font-family: ${themeGet('fontFamily.1', "'Lato', sans-serif")};
 	@media (max-width: 1420px) {
-		font-size: 20px;
+		/* font-size: 20px; */
 	}
 	@media (max-width: 1200px) {
-		font-size: ${themeGet('fontSizes.5', '18')}px;
+		/* font-size: ${themeGet('fontSizes.5', '18')}px; */
 	}
 	@media (max-width: 1024px) {
-		font-size: 17px;
-		line-height: 1.6;
+		/* font-size: 17px;
+		line-height: 1.6; */
 	}
 	@media (max-width: 767px) {
-		font-size: 15px;
-		line-height: 1.5;
+		/* font-size: 15px;
+		line-height: 1.5; */
 	}
 	@media (max-width: 575px) {
-		font-size: ${themeGet('fontSizes.5', '18')}px;
+		font-size: ${themeGet('fontSizes.6')}px;
 	}
 	@media (max-width: 460px) {
-		font-size: ${themeGet('fontSizes.4', '16')}px;
+		/* font-size: ${themeGet('fontSizes.4', '16')}px; */
 	}
 	a {
-		color: ${themeGet('colors.textColor', '#121213')};
+		color: ${themeGet('colors.primary')};
 		display: inline;
 		background: linear-gradient(to right, currentColor 0%, currentColor 100%);
 		background-size: 0px 2px;
@@ -170,10 +136,10 @@ export const PostMeta = styled.div`
 `;
 
 export const PostDate = styled.div`
-	font-size: ${themeGet('fontSizes.2', '14')}px;
-	color: ${themeGet('colors.textColor', '#121213')};
+	font-size: ${themeGet('fontSizes.4', '14')}px;
+	color: ${themeGet('colors.lightTextColor', '#121213')};
 	@media (max-width: 767px) {
-		font-size: ${themeGet('fontSizes.1', '12')}px;
+		font-size: ${themeGet('fontSizes.2', '12')}px;
 	}
 `;
 

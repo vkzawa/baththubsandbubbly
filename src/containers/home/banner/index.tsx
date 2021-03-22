@@ -1,13 +1,11 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import BannerPosts from './banner-post';
-// import TrendingPost from '../../../components/trending-post/trending-post';
 import {
 	BannerWrapper,
 	BannerInner,
 	BannerPostArea,
-	// TrendingPosts,
-	// Title,
+	BannerBlurbArea,
 } from './style';
 import { PostTitle, RawHTML } from '../../../components/post-details/post-details.style';
 
@@ -31,10 +29,10 @@ const Banner: React.FunctionComponent<BannerProps> = () => {
 				<BannerPostArea>
 					<BannerPosts />
 				</BannerPostArea>
-				<BannerPostArea>
+				<BannerBlurbArea>
 					<PostTitle>{blurb.title}</PostTitle>
 					<RawHTML dangerouslySetInnerHTML={{ __html: blurb.content }} />
-				</BannerPostArea>
+				</BannerBlurbArea>
 			</BannerInner>
 		</BannerWrapper>
 	);

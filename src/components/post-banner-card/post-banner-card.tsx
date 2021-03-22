@@ -66,9 +66,9 @@ const PostBannerCard: React.FunctionComponent<PostBannerCardProps> = ({
 				{categories == null ? null : (
 					<PostCategory>
 						{Boolean(categories.length) &&
-							categories.map((cat, index) => (
-								<Link key={index} to={`/category/${_.kebabCase(cat)}/`}>
-									{cat}
+							categories.map((category, index) => (
+								<Link key={index} to={category.uri}>
+									{category.name}
 								</Link>
 							))}
 					</PostCategory>

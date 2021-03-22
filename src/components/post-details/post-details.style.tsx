@@ -503,7 +503,9 @@ export const RawHTML = styled.div`
 
 	.alignright,
 	.alignleft {
-		max-width: 50%;
+		@media (min-width: 400px) {
+			max-width: 50%;
+		}
 
 		img {
 			width: 100%;
@@ -511,16 +513,18 @@ export const RawHTML = styled.div`
 		}
 	}
 
-	.alignright {
-		float: right;
-		margin-right: 0;
-		margin-left: 1em;
-	}
+	@media (min-width: 400px) {
+		.alignright {
+			float: right;
+			margin-right: 0;
+			margin-left: 1em;
+		}
 
-	.alignleft {
-		float: left;
-		margin-left: 0;
-		margin-right: 1em;
+		.alignleft {
+			float: left;
+			margin-left: 0;
+			margin-right: 1em;
+		}
 	}
 
 	.has-text-align-center { text-align: center; }

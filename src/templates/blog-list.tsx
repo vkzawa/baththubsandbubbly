@@ -52,48 +52,48 @@ const BlogList = (props: any) => {
 
 export default BlogList;
 
-export const pageQuery = graphql`
-	query {
-		site {
-			siteMetadata {
-				title
-			}
-		}
-		sitePage {
-			path
-		}
-		allWpPost(
-			sort: {fields: date, order: DESC}
-			limit: 10
-		) {
-			totalCount
-			edges {
-				node {
-					id
-					slug
-					uri
-					title
-					date(formatString: "MMMM DD, YYYY")
-					excerpt
-					featuredImage {
-						node {
-							localFile {
-								childImageSharp {
-									fluid(maxWidth: 1170, quality: 90) {
-										...GatsbyImageSharpFluid_withWebp_tracedSVG
-									}
-								}
-							}
-						}
-					}
-					categories {
-						nodes {
-							name
-							uri
-						}
-					}
-				}
-			}
-		}
-	}
-`;
+// export const pageQuery = graphql`
+// 	query {
+// 		site {
+// 			siteMetadata {
+// 				title
+// 			}
+// 		}
+// 		sitePage {
+// 			path
+// 		}
+// 		allWpPost(
+// 			sort: {fields: date, order: DESC}
+// 			limit: 10
+// 		) {
+// 			totalCount
+// 			edges {
+// 				node {
+// 					id
+// 					slug
+// 					uri
+// 					title
+// 					date(formatString: "MMMM DD, YYYY")
+// 					excerpt
+// 					featuredImage {
+// 						node {
+// 							localFile {
+// 								childImageSharp {
+// 									fluid(maxWidth: 1170, quality: 90) {
+// 										...GatsbyImageSharpFluid_withWebp_tracedSVG
+// 									}
+// 								}
+// 							}
+// 						}
+// 					}
+// 					categories {
+// 						nodes {
+// 							name
+// 							uri
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// `;

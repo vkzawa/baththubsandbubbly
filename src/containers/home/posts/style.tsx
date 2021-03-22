@@ -37,16 +37,6 @@ export const PostCol = styled.div`
 		padding: 0 10px;
 	}
 	@media (max-width: 767px) {
-		padding: 0 10px;
-		margin-bottom: 30px;
-	}
-	@media (max-width: 575px) {
-		width: 420px;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 25px;
-	}
-	@media (max-width: 460px) {
 		width: 100%;
 	}
 	&.full_width {

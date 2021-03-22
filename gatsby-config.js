@@ -65,9 +65,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-react-helmet`,
     },
-    {
-      resolve: `gatsby-plugin-lodash`,
-    },
     // {
     //   resolve: 'gatsby-plugin-mailchimp',
     //   options: {
